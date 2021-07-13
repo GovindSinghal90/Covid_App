@@ -1,4 +1,4 @@
-package com.example.covidapp.Controllers.done;
+package com.example.covidapp.Controllers.todo;
 
 import com.example.covidapp.Repo.done.*;
 import com.example.covidapp.Services.done.CustomerService;

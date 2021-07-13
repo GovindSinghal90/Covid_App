@@ -49,9 +49,10 @@ public String addVaccine(int doseNo,int vaccineCentreId,int vaccineNameNo,int da
 
         vaccinationSlotss.setDoseNo1(vaccinationSlotss.getDoseNo1()+cnt);
         vaccinationSlotRepo.save(vaccinationSlotss);
-        vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlotss);
-
+        System.out.println("YE.....");
+        try {
         vaccinationCentreService.addVaccine(vaccineCentreId,cnt,ageNo);
+        System.out.println("Y.....");
         log.info("Vaccines added Added successfully [ "+
                 "vaccineCentreId : "+vaccineCentreId+
                 ",vaccineNameNo : "+vaccineNameNo+
@@ -59,13 +60,18 @@ public String addVaccine(int doseNo,int vaccineCentreId,int vaccineNameNo,int da
                 ",ageNo : "+ageNo+
                 ",doseNo : "+doseNo,
                 ",cnt : "+cnt+" ]");
-        vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlotss);
+        System.out.println("YES.....");
+
+            vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlotss);
+        }
+        catch (Exception e){
+            log.error(e.getMessage()+"");
+        }
         return "Vaccines added Added successfully";
     }
     if(doseNo==2) {
         vaccinationSlotss.setDoseNo2(vaccinationSlotss.getDoseNo2()+cnt);
         vaccinationSlotRepo.save(vaccinationSlotss);
-        vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlotss);
         vaccinationCentreService.addVaccine(vaccineCentreId,cnt,ageNo);
         log.info("Vaccines added Added successfully [ "+
                         "vaccineCentreId : "+vaccineCentreId+
@@ -74,7 +80,12 @@ public String addVaccine(int doseNo,int vaccineCentreId,int vaccineNameNo,int da
                         ",ageNo : "+ageNo+
                         ",doseNo : "+doseNo,
                 ",cnt : "+cnt+" ]");
-        vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlotss);
+        try {
+            vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlotss);
+        }
+        catch (Exception e){
+            log.error(e.getMessage()+"");
+        }
         return "Vaccines added Added successfully";
     }
     if(doseNo!=1&&doseNo!=2) {

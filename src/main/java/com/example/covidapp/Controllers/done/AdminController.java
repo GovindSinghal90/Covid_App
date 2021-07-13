@@ -53,12 +53,12 @@ public class AdminController {
 
     @PostMapping("/register/admin")
     public String registerAdmin(@RequestBody(required = false) Admin admin,
-                                @RequestParam(value="key",required = false)String key) {
+                                @RequestHeader(value="key",required = false)String key) {
         log.info("AdminController:: /register/admin :"+admin+"with key: "+key+" called");
         try {
             if(key==null){
-                log.error("key is not present in param");
-                return "key is not present in param";
+                log.error("key is not present in headers");
+                return "key is not present in headers";
             }
             if(key.equals("qwerty")) {
                 if (admin == null){
@@ -120,8 +120,11 @@ public class AdminController {
         Customer customer=customerRepo.findById(phoneNumber).get();
         customer.setVaccinationStatus(customer.getVaccinationStatus()+1);
         customer.setMyVaccinationDate(java.time.LocalDate.now()+"");
+        System.out.println("yess");
         customerRepo.save(customer);
+        System.out.println("yes");
         vaccinationCentreService.addVaccinatedCount(vaccinationSlots.getVaccinecentreid(),1);
+        System.out.println("ye");
         registeredCustomerRepo.deleteById(phoneNumber);
         log.info("Vaccinated Successfully");
         return "Vaccinated Successfully";

@@ -109,7 +109,14 @@ private VaccineSlotKafka vaccineSlotKafka;
            vaccinationCentreRepo.save(vaccinationCentre.get());
            pincodeService.addVaccine(vaccinationCentre.get().getPincodeid(),quant,ageCategory);
             log.info(quant+" vaccines added successfully to Vaccination Centre id :"+id);
-            vaccineCentreKafka.saveCreateVaccineCentreLog(vaccinationCentre.get());
+            try {
+                vaccinationCentre.get().setPincode(null);
+                vaccinationCentre.get().setVaccinationSlots(null);
+                vaccineCentreKafka.saveCreateVaccineCentreLog(vaccinationCentre.get());
+            }
+            catch (Exception e){
+                log.error(e.toString());
+            }
             return "Vaccines Added Successfully";
         }
         log.error("Vaccination Centre with id :"+id+" not found");
@@ -121,10 +128,19 @@ private VaccineSlotKafka vaccineSlotKafka;
            vaccinationCentre.get().setVaccinationCentreCount(
                    vaccinationCentre.get().getVaccinationCentreCount()+cnt
            );
+            System.out.println("hi");
             vaccinationCentreRepo.save(vaccinationCentre.get());
+            System.out.println("hi");
             pincodeService.addVaccinatedCount(vaccinationCentre.get().getPincodeid(),cnt);
             log.info(cnt+" people added to vaccinated count for Vaccination Centre id :"+index);
-            vaccineCentreKafka.saveCreateVaccineCentreLog(vaccinationCentre.get());
+            System.out.println("hi");
+            try {vaccinationCentre.get().setVaccinationSlots(null);
+                vaccinationCentre.get().setPincode(null);
+                vaccineCentreKafka.saveCreateVaccineCentreLog(vaccinationCentre.get());
+            }
+            catch (Exception e){
+                log.error(e.toString());
+            }
             return "Vaccinated count added successfully";
         }
         log.error("Vaccination Centre with id :"+index+" not found");
@@ -146,6 +162,11 @@ private VaccineSlotKafka vaccineSlotKafka;
                     vaccinationSlots.setVaccineNo(lst.get(k).getId());
                     vaccinationSlots.setVaccinecentreid(vaccinationCentreId);
                     vaccinationSlotRepo.save(vaccinationSlots);
+//                    vaccinationSlots.setAge(null);
+//                    vaccinationSlots.setVaccinationCentre(null);
+//                    vaccinationSlots.setDate(null);
+//                    vaccinationSlots.setVaccineName(null);
+//                    vaccinationSlots.setRegisteredCustomerList(null);
                     vaccineSlotKafka.saveCreateVaccineSlotLog(vaccinationSlots);
                 }
             }

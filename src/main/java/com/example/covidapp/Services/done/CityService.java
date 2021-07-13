@@ -112,9 +112,11 @@ private StateRepo stateRepo;
         if(city.isPresent()){
            city.get().setCityCount(
                    city.get().getCityCount()+cnt
-           );
+           );System.out.println("hh");
             stateService.addVaccinatedCount(city.get().getStateid(),cnt);
+            System.out.println("hh");
             cityRepo.save(city.get());
+            System.out.println("hh");
             log.info(cnt+" people added to vaccinated count for city id :"+cityid);
             return "Vaccinated count added successfully";
         }

@@ -22,7 +22,8 @@ public class VaccineNameKafka {
     public void saveCreateVaccineNameLog(VaccineName vaccineName)
     {
         log.info(String.format("Vaccine name created -> %s", vaccineName));
-        this.kafkaTemplate.send("Vaccine_name", vaccineName);
+//        this.kafkaTemplate.send("Vaccine_name", vaccineName);
+        this.kafkaTemplate.send("t2", vaccineName);
     }
 //......................
 

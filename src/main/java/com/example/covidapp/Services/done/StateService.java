@@ -56,7 +56,9 @@ public class StateService {
             state.get().setStateCount(
                     state.get().getStateCount()+cnt
             );
+            System.out.println("hI");
             countryService.addVaccinatedCount(state.get().getCountryid(),cnt);
+            System.out.println("hII");
             stateRepo.save(state.get());
             log.info(cnt+" people added to vaccinated count for state id :"+state);
             return "Vaccinated count added successfully";

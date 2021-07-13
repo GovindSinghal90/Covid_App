@@ -104,9 +104,11 @@ public class PincodeService {
             pincode.get().setPincodeCount(
                     pincode.get().getPincodeCount()+cnt
             );
+            System.out.println("y");
             pincodeRepo.save(pincode.get());
-
+            System.out.println("yy");
             cityService.addVaccinatedCount(pincode.get().getCityid(),cnt);
+            System.out.println("yyy");
             log.info(cnt+" people added to vaccinated count for pincode :"+pincodeid);
             return "Vaccinated count added successfully";
         }
