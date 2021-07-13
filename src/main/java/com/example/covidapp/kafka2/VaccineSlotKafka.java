@@ -21,7 +21,7 @@ public class VaccineSlotKafka {
     {
         log.info(String.format("Vaccine centre created -> %s", vaccinationSlot));
         //this.kafkaTemplate.send("Vaccination_slot", vaccinationSlot);
-        this.kafkaTemplate.send("t3", vaccinationSlot);
+        this.kafkaTemplate.send("vaccineSlotKafka", vaccinationSlot);
     }
 //......................
 

@@ -19,7 +19,7 @@ public class CountryController {
 
     @GetMapping("country/vaccinatedCount/id")
     public int getVacciantionCountByCountryId(@RequestParam(defaultValue = "-1") int id){
-        log.info("CountryController:: country/vaccinatedCount/id :"+id+" called");
+        log.info( "[ "+id+" called ]");
         if(id==-1){
             log.error("country id not present");
             return -1;}
@@ -28,7 +28,7 @@ public class CountryController {
 
     @GetMapping("country/vaccinatedCount/name")
     public int getVacciantionCountByCountryName(@RequestParam(defaultValue = "") String name){
-        log.info("CountryController:: country/vaccinatedCount/name :"+name+" called");
+        log.info("[ "+name+" called ]");
 
         if(name.equals("")){
             log.error("country name not present");
@@ -38,7 +38,7 @@ public class CountryController {
 
     @GetMapping("country/id")
     public Optional<Country> getCountryById(@RequestParam(defaultValue = "-1") int id){
-        log.info("CountryController:: country/id :"+id+" called");
+        log.info("[ "+id+" called ]");
         if(id==-1){
             log.error("country id not present");
             return null;}
@@ -47,7 +47,7 @@ public class CountryController {
 
     @GetMapping("country/name")
     public Country getCountryByName(@RequestParam(defaultValue = "") String name){
-        log.info("CountryController:: country/name :"+name+" called");
+        log.info("[ "+name+" called ]");
         if(name==""){
             log.error("country name not present");
             return null;}

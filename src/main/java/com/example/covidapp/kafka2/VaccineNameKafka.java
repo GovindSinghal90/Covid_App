@@ -23,7 +23,7 @@ public class VaccineNameKafka {
     {
         log.info(String.format("Vaccine name created -> %s", vaccineName));
 //        this.kafkaTemplate.send("Vaccine_name", vaccineName);
-        this.kafkaTemplate.send("t2", vaccineName);
+        this.kafkaTemplate.send("vaccineNameKafka", vaccineName);
     }
 //......................
 

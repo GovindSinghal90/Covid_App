@@ -1,4 +1,4 @@
-package com.example.covidapp.Controllers.todo;
+package com.example.covidapp.Controllers.done;
 
 import com.example.covidapp.Repo.done.*;
 import com.example.covidapp.Services.done.CustomerService;
@@ -30,7 +30,7 @@ public class CustomerController {
 
     @GetMapping("/login/customer")
     public String loginCustomer(@RequestBody(required = false) Customer customer) {
-        log.info("CustomerController:: /login/customer :"+customer+" called");
+        log.info("[ customer :"+customer+" ]");
      if(customer==null){
          log.error("Phone no is not present :"+customer);
          return "Phone no is not present";
@@ -40,7 +40,7 @@ public class CustomerController {
 
     @DeleteMapping("/logout/customer")
     public String logoutCustomer(@RequestHeader(value = "token", required = false) String token) {
-        log.info("CustomerController:: /logout/customer with token:"+token+" called");
+        log.info("[ token:"+token+" called ]");
         if (token == null) {
             log.error("Token Not Present in headers :"+token);
             return "Token Not Present in headers";
@@ -51,7 +51,7 @@ public class CustomerController {
 
     @PostMapping("/register/customer")
     public String registerCustomer(@RequestBody(required = false) Customer customer) {
-        log.info("CustomerController:: /register/customer :"+customer+" called");
+        log.info("[customer :"+customer+" called ]");
         try {
             if(customer==null){
                 log.error("empty customer fields ,Customer { "+customer +" }");
@@ -78,7 +78,7 @@ public class CustomerController {
                                      @RequestParam(value = "date_no", required = false) String date_no,
                                      @RequestHeader(value = "token", required = false) String token) {
 
-
+log.info("[ vaccine_centre_id:"+vaccine_centre_id+", vaccine_name:"+vaccine_name+", date_no:"+date_no+", token:"+token+" ]");
         if (token == null) {
             log.error("Token Not Present in headers");
             return "Token Not Present in headers"; }

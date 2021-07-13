@@ -16,7 +16,7 @@ public class StateController {
 
     @GetMapping("state/vaccinatedCount/id")
     public int getVacciantionCountByStateId(@RequestParam(defaultValue = "-1") int id){
-        log.info("StateController:: state/vaccinatedCount/id called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("State id not present");
             return -1;}
@@ -25,7 +25,7 @@ public class StateController {
 
     @GetMapping("state/vaccinatedCount/name")
     public int getVacciantionCountByStateName(@RequestParam(defaultValue = "") String name){
-        log.info("StateController:: state/vaccinatedCount/name called with name: "+name);
+        log.info("[ name: "+name+ " ]");
         if(name==""){
             log.error("State name not present");
             return -1;}
@@ -34,7 +34,7 @@ public class StateController {
 
     @GetMapping("state/id")
     public Optional<State> getStateById(@RequestParam(defaultValue = "-1") int id){
-        log.info("StateController:: state/id called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("State id not present");
             return null;}
@@ -43,7 +43,7 @@ public class StateController {
 
     @GetMapping("state/name")
     public State getStateByName(@RequestParam(defaultValue = "") String name){
-        log.info("StateController:: state/name called with name: "+name);
+        log.info("[ name: "+name+ " ]");
         if(name==""){
             log.error("State name not present");
             return null;}

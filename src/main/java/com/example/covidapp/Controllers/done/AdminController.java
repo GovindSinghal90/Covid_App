@@ -30,7 +30,7 @@ public class AdminController {
     @GetMapping("/login/admin")
     public String loginAdmin(@RequestBody(required = false) Admin admin)
     {
-        log.info("AdminController:: /login/admin :"+admin+" called");
+        log.info("[ admin :"+admin+" ]");
         if(admin==null){
             log.error("Phone no is not present :"+admin);
             return "Please pass phone no in admin fields";
@@ -40,7 +40,7 @@ public class AdminController {
 
     @DeleteMapping("/logout/admin")
     public String logoutAdmin(@RequestHeader(value = "token",required = false) String token){
-        log.info("AdminController:: /logout/admin with token:"+token+" called");
+        log.info("[ token:"+token+" ]");
             if (token == null) {
                 log.error("Token not present in headers");
                 return "Token Not Present in headers";
@@ -54,7 +54,7 @@ public class AdminController {
     @PostMapping("/register/admin")
     public String registerAdmin(@RequestBody(required = false) Admin admin,
                                 @RequestHeader(value="key",required = false)String key) {
-        log.info("AdminController:: /register/admin :"+admin+"with key: "+key+" called");
+        log.info("[ admin :"+admin+"with key: "+key+" called ]");
         try {
             if(key==null){
                 log.error("key is not present in headers");
@@ -79,9 +79,9 @@ public class AdminController {
     @PostMapping("/customer/setToVaccinated")
     public String setToVaccinated(@RequestParam(value = "phone_number", required = false) String phone_number,
                                   @RequestHeader(value = "token", required = false) String token){
-        log.info("AdminController:: /customer/setToVaccinated called with values: "+
+        log.info("[ "+
                 "phone_number: "+phone_number+
-                " token "+token);
+                " token "+token+" ]");
         if (token == null) {
             log.error("Token Not Present in headers");
         return "Token Not Present in headers"; }

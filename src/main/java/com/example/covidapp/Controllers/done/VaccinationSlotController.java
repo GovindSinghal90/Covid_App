@@ -28,7 +28,7 @@ AgeRepo ageRepo;
 
     @PostMapping("/vaccinationSlot/add")
     public String addVaccinationSlot(@RequestBody() VaccinationSlots vaccinationSlots){
-        log.info("VaccinationSlotController:: /vaccinationSlot/add :"+vaccinationSlots+" called");
+        log.info("[ VaccinationSlot:"+vaccinationSlots+" called ]");
        if(ageRepo.existsById(vaccinationSlots.getAgeNo())==false){
            log.error("Age no incorrect : "+vaccinationSlots.getAgeNo());
            return "Age no incorrect";
@@ -58,7 +58,7 @@ AgeRepo ageRepo;
                                               @RequestParam(value = "date_no",required = false)String date_no,
                                               @RequestParam(value = "cnt_no",required = false) String cnt_no,
                                               @RequestHeader(value = "token",required = false) String token){
-        log.info("VaccinationSlotController:: vaccinationSlot/addVaccine/{vaccine_centre_id} : { "+
+        log.info("[ { "+
                 "vaccine_centre_id : " +vaccine_centre_id+
                 ",dose_no : "+ dose_no+
                 ",vaccine_name : "+vaccine_name+
@@ -66,7 +66,7 @@ AgeRepo ageRepo;
                 ",date_no : "+date_no+
                 ",cnt_no : "+cnt_no+
                 ",token : "+token
-                +" } called");
+                +" } called ]");
         //return "id/"+id+"doseNo/"+doseNo+"vaccinneName/"+vaccineName+"ageno/"+ageNo;
         if (token == null) {
             log.error("Token Not Present in headers");

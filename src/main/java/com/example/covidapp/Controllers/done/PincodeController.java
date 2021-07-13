@@ -21,7 +21,7 @@ public class PincodeController {
 
     @GetMapping("pincode/vaccinatedCount")
     public int getVacciantionCountByPincode(@RequestParam(defaultValue = "-1") int id){
-        log.info("Pincode:: pincode/vaccinatedCount called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("Pincode id not present");
             return -1;
@@ -31,7 +31,7 @@ public class PincodeController {
 
     @GetMapping("pincode")
     public Optional<Pincode> getPincode(@RequestParam(defaultValue = "-1") int id){
-        log.info("Pincode:: /pincode called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("Pincode id not present");
             return null;
@@ -43,7 +43,7 @@ public class PincodeController {
     @PostMapping("pincode/add")
     public String addPincode(@RequestBody(required = false) Pincode pincode,
                              @RequestHeader(value = "token",required = false) String token){
-        log.info("Pincode:: pincode/add called with pincode :"+pincode+" and token :"+token);
+        log.info("[ pincode :"+pincode+" and token :"+token+" ]");
         if (token == null) {
             log.error("Token Not Present in headers");
             return "Token Not Present in headers";

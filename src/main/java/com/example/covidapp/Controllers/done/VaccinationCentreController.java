@@ -22,7 +22,7 @@ public class VaccinationCentreController {
 
     @GetMapping("vaccinationCentre/vaccinatedCount/id")
     public int getVacciantionCountByVaccinationCentreId(@RequestParam(defaultValue = "-1") int id){
-        log.info("VaccinationCentreController:: vaccinationCentre/vaccinatedCount/id called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("Vaccination Centre id not present");
             return -1;
@@ -32,7 +32,7 @@ public class VaccinationCentreController {
 
     @GetMapping("vaccinationCentre/id")
     public Optional<VaccinationCentre> getVaccinationCentreById(@RequestParam(defaultValue = "-1") int id){
-        log.info("VaccinationCentreController:: vaccinationCentre/id called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("Vaccination Centre id not present");
             return null;
@@ -44,8 +44,7 @@ public class VaccinationCentreController {
     @PostMapping("vaccinationCentre/add")
     public String addVaccinationCentre(@RequestBody(required = false) VaccinationCentre vaccinationCentre,
                                        @RequestHeader(value = "token",required = false) String token){
-        log.info("VaccinationCentreController:: vaccinationCentre/add called with Vaccination Centre { "
-        +vaccinationCentre+" }+ and token :"+token);
+        log.info("[ Vaccination Centre { " +vaccinationCentre+" }+ and token :"+token+" ]");
         if (token == null) {
             log.error("Token Not Present in headers");
             return "Token Not Present in headers";

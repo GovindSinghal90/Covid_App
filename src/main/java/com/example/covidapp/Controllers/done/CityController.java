@@ -21,7 +21,7 @@ public class CityController {
 
     @GetMapping("city/vaccinatedCount/id")
     public int getVacciantionCountByCityId(@RequestParam(defaultValue = "-1") int id){
-        log.info("CityController:: city/vaccinatedCount/id called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("City id not present");
             return -1;
@@ -31,7 +31,7 @@ public class CityController {
 
     @GetMapping("city/vaccinatedCount/name")
     public int getVacciantionCountByCityName(@RequestParam(defaultValue = "") String name){
-        log.info("CityController:: city/vaccinatedCount/name called with name: "+name);
+        log.info("[ name: "+name+" ]");
         if(name==""){
             log.error("City name not present");
             return -1;
@@ -41,7 +41,7 @@ public class CityController {
 
     @GetMapping("city/id")
     public Optional<City> getCityById(@RequestParam(defaultValue = "-1") int id){
-        log.info("CityController:: city/id called with id: "+id);
+        log.info("[ id: "+id+" ]");
         if(id==-1){
             log.error("City id not present");
             return null;
@@ -51,7 +51,7 @@ public class CityController {
 
     @GetMapping("city/name")
     public City getCityByName(@RequestParam(defaultValue = "") String name){
-        log.info("CityController:: city/vaccinatedCount/name called with name: "+name);
+        log.info("[ name: "+name+" ]");
         if(name==""){
             log.error("City name not present");
             return null;
@@ -62,7 +62,7 @@ public class CityController {
     @PostMapping("city/add")
     public String addCity(@RequestBody(required = false) City city,
                           @RequestHeader(value = "token",required = false) String token){
-        log.info("CityController:: city/add called with city: "+city+" and token: "+token);
+        log.info("[ city: "+city+" and token: "+token+" ]");
         if (token == null) {
             log.error("Token Not Present in headers");
             return "Token Not Present in headers";

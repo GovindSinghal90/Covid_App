@@ -24,7 +24,7 @@ private VaccineNameKafka vaccineNameKafka;
     @PostMapping("/vaccine/add")
     public String addVaccine(@RequestBody(required = false) VaccineName vaccineName,
                              @RequestHeader(required = false)String token){
-        log.info("Vaccine Name Controller called:: /vaccine/add with vaccine name :"+vaccineName+" called");
+        log.info("[ vaccine name :"+vaccineName+" called ]");
         if (token == null) {
             log.error("Token Not Present in headers");
             return "Token Not Present in headers";
